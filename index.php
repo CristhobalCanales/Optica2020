@@ -3,74 +3,50 @@
 use models\UsuarioModel as UsuarioModel;
 
 session_start();
-require_once("models/UsuarioModel.php");
-if (isset($_SESSION['usuario'])) {
-    $model = new UsuarioModel();
-    $usuario = $model->getAllUsuarios();
+require_once "models/UsuarioModel.php";
+if (isset($_SESSION["usuario"])) {
+  $model = new UsuarioModel();
+  $usuario = $model->getAllUsuarios();
 
-    print_r($usuario);
+  print_r($usuario);
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/fotologin.ico" type="image/x-icon">
-    <title>Optica</title>
+    <link rel='stylesheet' href='css/login.css' />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap' rel='stylesheet'>
+    <title>Glasses Optica - Iniciar Sesión</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col l4 m4 s12">
 
-            </div>
-            <div class="col l4 m4 s12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-image">
-                            <img src="img/fotologin.jpg">
-                        </div>
-                        <h5 class="center blue-text accent-2">Acceso</h5>
-                    </div>
-                    <div class="card-action">
-                        <form action="controllers/LoginController.php" method="POST">
-                            <p class="red-text">
-                                <?php
-                                if (isset($_SESSION['error'])) {
-                                    echo $_SESSION['error'];
-                                    unset($_SESSION['error']);
-                                }
-                                ?>
-                            </p>
-                            <div class="input-field">
-                                <input id="rut" type="text" name="rut">
-                                <label for="rut">Rut de vendedor</label>
-                            </div>
-                            <div class="input-field">
-                                <input id="clave" type="password" name="clave">
-                                <label for="clave">Clave de acceso</label>
-                            </div>
-
-                            <button class="btn blue ancho-100 redondo">Entrar</button>
-                            <p>
-                                <a href="admin.php" class="blue-text">Ingresa con una cuenta de Administrador</a>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<div class="box">
+<img src="img/logodos.png" alt="" class="logo">
+      <h2>Inicia Sesión</h2>
+      <p>Usa tu cuenta de Vendedor</p>
+      <form action="controllers/LoginController.php" method="POST">
+        <div class="inputBox">
+          <input type="text" name="rut" required onkeyup="this.setAttribute('value', this.value);" value="" />
+          <label for="rut">RUT</label>
         </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+        <div class="inputBox">
+          <input type="password" name="clave" required onkeyup="this.setAttribute('value', this.value);" value="" />
+          <label for="clave">Contraseña</label>
+        </div>
+        <p class="rojo">
+                                <?php if (isset($_SESSION["error"])) {
+                                  echo $_SESSION["error"];
+                                  unset($_SESSION["error"]);
+                                } ?>
+                            </p>
+        <input type="submit" name="sign-in" value="Iniciar Sesión" />
+      </form>
+      <label class="pequeno">¿Eres Administrador? <br> Click<a href="admin.php"> Aquí</a></label>
+</div>
+<script src='https://kit.fontawesome.com/2c36e9b7b1.js' crossorigin='anonymous'></script>
 </body>
-
 </html>
