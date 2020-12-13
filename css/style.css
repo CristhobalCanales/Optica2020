@@ -1,60 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Texturina:wght@100&display=swap');
-
-*{
-    font-family: 'Texturina', serif;
-}
-
-
-html{
-    background: url(../img/fondo.jpg)no-repeat center center fixed;
-    height: 100%;
-    background-size: 100% 100%;
+* {
+  font-family: "Roboto", sans-serif;
 }
 
 .ancho-100 {
-    width: 100%;
+  width: 100%;
 }
 
 .redondo {
-    border-radius: 30px;
+  border-radius: 30px;
 }
 .cincuentaredondo {
-    border-radius: 50px;
+  border-radius: 50px;
 }
 
 .input-field input:focus + label {
-    color: rgb(63, 146, 255) !important;
+  color: #287ae6 !important;
 }
 
 .input-field input:focus {
-    border-bottom: 1px solid rgb(63, 146, 255) !important;
-    box-shadow: 0 1px 0 0 rgb(63, 146, 255) !important;
+  border-bottom: 1px solid #287ae6 !important;
+  box-shadow: 0 1px 0 0 #287ae6 !important;
 }
 
 .md-blue {
-    color: rgba(63, 146, 255);
+  color: #287ae6;
 }
 .md-orange {
-    color: rgb(255, 153, 0);
+  color: rgb(255, 153, 0);
 }
 
 .card {
-    text-align: center;
-    margin-top: 50px;
-    border-radius: 10px;
+  text-align: center;
+  margin-top: 50px;
+  border-radius: 10px;
 }
 
-.bajar{
-    margin-top: 20px;
+.bajar {
+  margin-top: 20px;
 }
 
-hr{
-    height: 2px;
-    background-color: black;
-    width: 95%;
+hr {
+  height: 2px;
+  background-color: black;
+  width: 95%;
 }
-
-
-
-
-
