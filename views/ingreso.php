@@ -3,19 +3,16 @@
 use models\UsuarioModel as UsuarioModel;
 
 session_start();
-require_once("../models/UsuarioModel.php");
+require_once "../models/UsuarioModel.php";
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
 
-
-if (isset($_SESSION['user'])) {
-    $model = new UsuarioModel();
-    $usuario = $model->getAllUsuarios();
+if (isset($_SESSION["user"])) {
+  $model = new UsuarioModel();
+  $usuario = $model->getAllUsuarios();
 }
-
-
 ?>
 
 
@@ -28,23 +25,23 @@ if (isset($_SESSION['user'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="shortcut icon" href="../img/fotologin.ico" type="image/x-icon">
-    <title>Ingresar Receta</title>
+    <link rel='stylesheet' href='../css/estilos.css'>
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <title>Glasses Optica - Ingresar Receta</title>
 </head>
 
 <body>
-    <?php if (isset($_SESSION['user'])) { ?>
+    <?php if (isset($_SESSION["user"])) { ?>
         <div class="container">
             <div class="row">
-                <nav class="blue darken-3">
+                <nav class="fondoazul">
                     <div class="nav-wrapper">
-                        <a href="ingreso.php" class="brand-logo"><?= $_SESSION['user']['rol'] ?>: <?= $_SESSION['user']['nombre'] ?></a>
                         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li><a href="clientes.php">Crear Cliente</a></li>
-                            <li><a href="buscarCliente.php">Buscar Receta</a></li>
-                            <li class="active"><a href="ingreso.php">Ingreso de Receta</a></li>
-                            <li><a href="salir.php"><i class="material-icons white-text small ">exit_to_app</i></a></li>
+                            <li><a href="clientes.php"><span title="Crear Cliente"><i class="fas fa-user-plus"></i></span></a></li>
+                            <li><a href="buscarReceta.php"><span title="Buscar Receta"><i class="fas fa-file-search"></i></span></a></li>
+                            <li class="activo"><a href="ingreso.php"><span title="Ingreso de Receta"><i class="fas fa-file-plus azul"></i></span></a></li>
+                            <li><a href="salir.php"><span title="Salir"><i class="fas fa-power-off"></i></span></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -56,26 +53,26 @@ if (isset($_SESSION['user'])) {
                                 <img src="https://www.designyourway.net/blog/wp-content/uploads/2016/07/Dark-wallpaper-desktop-background-30-700x438.jpg">
                             </div>
                             <a href="ingreso.php"><img class="circle" src="../img/perfilnav.jpg"></a>
-                            <a href="ingreso.php" class="brand-logo white-text"><?= $_SESSION['user']['nombre'] ?></a>
+                            <a href="ingreso.php" class="brand-logo white-text"><?= $_SESSION["user"]["nombre"] ?></a>
                         </div>
                     </li>
-                    <li><a class="white-text" href="clientes.php">Crear Cliente<i class="material-icons white-text small ">add_circle</i></a></li>
-                    <li class="active"><a class="white-text" href="buscarCliente.php">Buscar Receta<i class="material-icons white-text small ">search</i></a></li>
-                    <li><a class="white-text" href="ingreso.php">Ingreso de Receta<i class="material-icons white-text small ">create</i></a></li>
-                    <li><a class="white-text" href="salir.php">Salir<i class="material-icons white-text small ">exit_to_app</i></a></li>
+                    <li><a class="white-text" href="clientes.php">Crear Cliente<i class="fas fa-user-plus fa-2x white-text"></i></a></li>
+                    <li class="activo"><a class="white-text" href="buscarReceta.php">Buscar Receta<i class="fas fa-file-search fa-2x white-text azul"></i></a></li>
+                    <li><a class="white-text" href="ingreso.php">Ingreso de Receta<i class="fas fa-file-plus fa-2x white-text"></i></a></li>
+                    <li><a class="white-text" href="salir.php">Salir<i class="fas fa-power-off fa-2x white-text"></i></a></li>
                 </ul>
 
                 <!-- FIN DE NAV -->
                 <br>
                 <div class="col l1 m4 s12"></div>
-                <div class="col l10 m4 s12 white redondo">
-                    <h6 class="blue-text center">Ingresar una Receta</h6>
+                <div class="col l10 m4 s12 colorborde">
+                    <h4 class="azul center">Ingresar una Receta</h4>
                     <br><br>
                     <div class="row" id="app">
                         <div class="col l6">
                             <form @submit.prevent="buscar">
                                 <input type="text" class="col l6" placeholder="Rut" v-model="rut">
-                                <button class="btn blue redondo col l4">BUSCAR</button>
+                                <button class="btn fondoazul col l4">BUSCAR</button>
                             </form>
                         </div>
                         <div class="col l6 m12 s12">
@@ -109,7 +106,7 @@ if (isset($_SESSION['user'])) {
                         </div>
                     </div>
                     <form action="#" method="POST">
-                        <div class="col l6 m6 s6 blue-text">
+                        <div class="col l6 m6 s6 azul">
                             <p>Tipo Lente:</p>
                             <label>
                                 <input type="checkbox" name="xx" value="1" />
@@ -120,13 +117,13 @@ if (isset($_SESSION['user'])) {
                                 <span>Cerca</span>
                             </label>
                         </div>
-                        <div class="col l3 center blue-text">
+                        <div class="col l3 center azul">
                             <p>Ojo Izquierdo</p>
                             <input type="text" placeholder="Esfera" name="esfeizq">
                             <input type="text" placeholder="Cilindro" name="cilizq">
                             <input type="text" placeholder="Eje" name="ejeizq">
                         </div>
-                        <div class="col l3 center blue-text">
+                        <div class="col l3 center azul">
                             <p>Ojo Derecho</p>
                             <input type="text" placeholder="Esfera" name="esfeder">
                             <input type="text" placeholder="Cilindro" name="cilder">
@@ -187,20 +184,21 @@ if (isset($_SESSION['user'])) {
                         </div>
                         <div class="col l4">
                             <div class="input-field">
-                                <button class="btn ancho-100 redondo blue">Crear Receta</button>
+                                <button class="btn fondoazul">Crear Receta</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    <?php } else {
-        header("Location: ../index.php") ?>
+    <?php } else {header("Location: ../index.php"); ?>
     <?php } ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="../js/buscar_cliente.js"></script>
     <script src="../js/combobox.js"></script>
+    <script src='https://kit.fontawesome.com/2c36e9b7b1.js' crossorigin='anonymous'></script>
+    <link rel='stylesheet' href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css' integrity='sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p' crossorigin='anonymous'/>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
